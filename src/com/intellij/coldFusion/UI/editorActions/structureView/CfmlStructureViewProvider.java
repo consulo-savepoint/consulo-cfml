@@ -22,11 +22,9 @@ import com.intellij.ide.structureView.TreeBasedStructureViewBuilder;
 import com.intellij.ide.structureView.impl.StructureViewComposite;
 import com.intellij.ide.structureView.impl.TemplateLanguageStructureViewBuilder;
 import com.intellij.lang.PsiStructureViewFactory;
-import com.intellij.openapi.editor.Editor;
 import com.intellij.openapi.fileEditor.FileEditor;
 import com.intellij.psi.PsiFile;
 import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
 
 /**
  * Created by Lera Nikolaenko
@@ -41,7 +39,7 @@ public class CfmlStructureViewProvider implements PsiStructureViewFactory {
         StructureView mainView = new TreeBasedStructureViewBuilder() {
           @Override
           @NotNull
-          public StructureViewModel createStructureViewModel(@Nullable Editor editor) {
+          public StructureViewModel createStructureViewModel() {
             return new CfmlStructureViewModel(psiFile);
           }
         }.createStructureView(fileEditor, mainFile.getProject());
