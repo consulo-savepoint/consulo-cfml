@@ -15,8 +15,6 @@
  */
 package com.intellij.coldFusion;
 
-import com.intellij.testFramework.fixtures.JavaCodeInsightFixtureTestCase;
-
 /**
  * Created by IntelliJ IDEA.
  * User: Nadya.Zabrodina

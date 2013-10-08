@@ -15,6 +15,12 @@
  */
 package com.intellij.coldFusion.model;
 
+import java.util.Collection;
+import java.util.Collections;
+import java.util.Set;
+
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 import com.intellij.codeInsight.AutoPopupController;
 import com.intellij.coldFusion.model.info.CfmlAttributeDescription;
 import com.intellij.coldFusion.model.info.CfmlLangInfo;
@@ -41,12 +47,6 @@ import com.intellij.psi.tree.IElementType;
 import com.intellij.psi.util.PsiTreeUtil;
 import com.intellij.util.ArrayUtil;
 import com.intellij.util.containers.ContainerUtil;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
-
-import java.util.Collection;
-import java.util.Collections;
-import java.util.Set;
 
 /**
  * Created by Lera Nikolaenko
@@ -57,8 +57,7 @@ public class CfmlUtil {
   public static VirtualFile findFileByLibTag(PsiFile originalFile, @NotNull String libtag) {
     VirtualFile base = getRealVirtualFile(originalFile);
     final Module module = base == null ? null : ModuleUtilCore.findModuleForFile(base, originalFile.getProject());
-    base = module == null ? null : module.getModuleFile();
-    base = base == null ? null : base.getParent();
+    base = module == null ? null : module.getModuleDir();
 
     if (libtag != null && libtag.startsWith("/")) {
       libtag = libtag.substring("/".length());

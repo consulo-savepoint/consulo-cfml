@@ -17,8 +17,6 @@ package com.intellij.coldFusion;
 
 import com.intellij.codeInsight.TargetElementUtilBase;
 import com.intellij.openapi.editor.markup.RangeHighlighter;
-import com.intellij.testFramework.fixtures.JavaCodeInsightFixtureTestCase;
-
 /**
  * @author vnikolaenko
  */
