@@ -30,13 +30,6 @@ public class ColdFusionModuleExtensionProvider implements ModuleExtensionProvide
 
 	@NotNull
 	@Override
-	public Class<ColdFusionModuleExtension> getImmutableClass()
-	{
-		return ColdFusionModuleExtension.class;
-	}
-
-	@NotNull
-	@Override
 	public ColdFusionModuleExtension createImmutable(@NotNull String s, @NotNull Module module)
 	{
 		return new ColdFusionModuleExtension(s, module);

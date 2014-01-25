@@ -15,6 +15,14 @@
  */
 package com.intellij.coldFusion.model.files;
 
+import gnu.trove.THashSet;
+
+import java.util.Arrays;
+import java.util.Set;
+
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
+import com.dci.intellij.dbn.language.sql.SQLLanguage;
 import com.intellij.coldFusion.model.CfmlLanguage;
 import com.intellij.coldFusion.model.parsers.CfmlElementTypes;
 import com.intellij.lang.Language;
@@ -26,13 +34,6 @@ import com.intellij.psi.PsiFile;
 import com.intellij.psi.PsiManager;
 import com.intellij.psi.impl.source.PsiFileImpl;
 import com.intellij.psi.templateLanguages.TemplateLanguageFileViewProvider;
-import com.intellij.sql.psi.SqlLanguage;
-import gnu.trove.THashSet;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
-
-import java.util.Arrays;
-import java.util.Set;
 
 /**
  * Created by Lera Nikolaenko
@@ -42,7 +43,7 @@ public class CfmlFileViewProvider extends MultiplePsiFilesPerDocumentFileViewPro
 
   private static final THashSet<Language> ourRelevantLanguages =
     new THashSet<Language>(Arrays.asList(StdLanguages.HTML, CfmlLanguage.INSTANCE,
-                                         SqlLanguage.INSTANCE));
+			SQLLanguage.INSTANCE));
 
 
   public CfmlFileViewProvider(final PsiManager manager, final VirtualFile virtualFile, final boolean physical) {
@@ -71,8 +72,8 @@ public class CfmlFileViewProvider extends MultiplePsiFilesPerDocumentFileViewPro
       file.setContentElementType(CfmlElementTypes.TEMPLATE_DATA);
       return file;
     }
-    if (lang == SqlLanguage.INSTANCE) {
-      final PsiFileImpl file = (PsiFileImpl)LanguageParserDefinitions.INSTANCE.forLanguage(SqlLanguage.INSTANCE).createFile(this);
+    if (lang == SQLLanguage.INSTANCE) {
+      final PsiFileImpl file = (PsiFileImpl)LanguageParserDefinitions.INSTANCE.forLanguage(SQLLanguage.INSTANCE).createFile(this);
       file.setContentElementType(CfmlElementTypes.SQL_DATA);
       return file;
     }

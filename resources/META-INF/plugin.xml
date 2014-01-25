@@ -2,11 +2,12 @@
 	<name>CFML Support</name>
 	<description>ColdFusion Markup Language (CFML) support.</description>
 	<category>Markup Languages</category>
-	<version>3.53</version>
-	<vendor email="support@jetbrains.com">JetBrains</vendor>
+	<version>SNAPSHOT</version>
+	<vendor>JetBrains</vendor>
 	<resource-bundle>messages.CfmlBundle</resource-bundle>
 
 	<depends>org.consulo.java</depends>
+	<depends>org.consulo.sql</depends>
 	<depends>com.intellij.spellchecker</depends>
 	<depends>com.intellij.xml</depends>
 

@@ -21,14 +21,14 @@ package com.intellij.coldFusion.model;
  * Date: 4/23/12
  */
 
+import org.jetbrains.annotations.NotNull;
+import com.dci.intellij.dbn.language.sql.SQLLanguage;
 import com.intellij.codeInsight.highlighting.HighlightErrorFilter;
 import com.intellij.coldFusion.model.files.CfmlFileType;
 import com.intellij.lang.Language;
 import com.intellij.lang.html.HTMLLanguage;
 import com.intellij.openapi.vfs.VirtualFile;
 import com.intellij.psi.PsiErrorElement;
-import com.intellij.sql.psi.SqlLanguage;
-import org.jetbrains.annotations.NotNull;
 
 
 public class CfmlErrorFilter extends HighlightErrorFilter {
@@ -39,7 +39,7 @@ public class CfmlErrorFilter extends HighlightErrorFilter {
       return true;
     }
     final Language language = element.getParent().getLanguage();
-    if (language == CfmlLanguage.INSTANCE || language == HTMLLanguage.INSTANCE || language == SqlLanguage.INSTANCE) return true;
+    if (language == CfmlLanguage.INSTANCE || language == HTMLLanguage.INSTANCE || language == SQLLanguage.INSTANCE) return true;
     return false;
   }
 }
