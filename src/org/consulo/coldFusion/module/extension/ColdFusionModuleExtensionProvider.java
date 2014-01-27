@@ -37,8 +37,8 @@ public class ColdFusionModuleExtensionProvider implements ModuleExtensionProvide
 
 	@NotNull
 	@Override
-	public ColdFusionMutableModuleExtension createMutable(@NotNull String s, @NotNull Module module, @NotNull ColdFusionModuleExtension moduleExtension)
+	public ColdFusionMutableModuleExtension createMutable(@NotNull String s, @NotNull Module module)
 	{
-		return new ColdFusionMutableModuleExtension(s, module, moduleExtension);
+		return new ColdFusionMutableModuleExtension(s, module);
 	}
 }

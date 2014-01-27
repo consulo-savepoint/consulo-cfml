@@ -14,12 +14,9 @@ import com.intellij.openapi.roots.ModifiableRootModel;
  */
 public class ColdFusionMutableModuleExtension extends ColdFusionModuleExtension implements MutableModuleExtension<ColdFusionModuleExtension>
 {
-	private ColdFusionModuleExtension myModuleExtension;
-
-	public ColdFusionMutableModuleExtension(@NotNull String id, @NotNull Module module, @NotNull ColdFusionModuleExtension moduleExtension)
+	public ColdFusionMutableModuleExtension(@NotNull String id, @NotNull Module module)
 	{
 		super(id, module);
-		myModuleExtension = moduleExtension;
 	}
 
 	@Nullable
@@ -36,14 +33,8 @@ public class ColdFusionMutableModuleExtension extends ColdFusionModuleExtension 
 	}
 
 	@Override
-	public boolean isModified()
+	public boolean isModified(@NotNull ColdFusionModuleExtension moduleExtension)
 	{
-		return myModuleExtension.isEnabled() != isEnabled();
-	}
-
-	@Override
-	public void commit()
-	{
-		myModuleExtension.commit(this);
+		return moduleExtension.isEnabled() != isEnabled();
 	}
 }
