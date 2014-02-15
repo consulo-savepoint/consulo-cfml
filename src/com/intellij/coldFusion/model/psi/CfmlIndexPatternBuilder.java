@@ -25,7 +25,6 @@ import com.intellij.coldFusion.model.files.CfmlFile;
 import com.intellij.coldFusion.model.lexer.CfmlLexer;
 import com.intellij.coldFusion.model.lexer.CfmlTokenTypes;
 import com.intellij.coldFusion.model.parsers.CfmlElementTypes;
-import com.intellij.lang.Language;
 import com.intellij.lang.LanguageParserDefinitions;
 import com.intellij.lang.LanguageVersion;
 import com.intellij.lang.ParserDefinition;
@@ -52,7 +51,7 @@ public class CfmlIndexPatternBuilder implements IndexPatternBuilder
 
 			cfmlLayeredLexer.registerLayer(new XmlHighlightingLexer(), CfmlElementTypes.TEMPLATE_TEXT);
 
-			LanguageVersion<Language> languageVersion = LanguageVersionUtil.findLanguageVersion(SQLLanguage.INSTANCE, file);
+			LanguageVersion<?> languageVersion = LanguageVersionUtil.findLanguageVersion(SQLLanguage.INSTANCE, file);
 
 			ParserDefinition parserDefinition = LanguageParserDefinitions.INSTANCE.forLanguage(SQLLanguage.INSTANCE);
 			cfmlLayeredLexer.registerLayer(parserDefinition.createLexer(file.getProject(), languageVersion), CfmlElementTypes.SQL);
