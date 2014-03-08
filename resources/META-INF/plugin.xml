@@ -18,7 +18,12 @@
 	<extensions defaultExtensionNs="com.intellij">
 		<errorHandler implementation="com.intellij.diagnostic.ITNReporter"/>
 		<iconDescriptorUpdater implementation="org.consulo.coldFusion.CfmlIconDescriptorUpdater"/>
-		<moduleExtensionProvider key="cold-fusion" parent-key="java" implementationClass="org.consulo.coldFusion.module.extension.ColdFusionModuleExtensionProvider"/>
+		<moduleExtensionProvider key="cold-fusion"
+								 parentKey="java"
+								 icon="/icons/cfml.png"
+								 name="ColdFusion"
+								 immutableClass="org.consulo.coldFusion.module.extension.ColdFusionModuleExtension"
+								 mutableClass="org.consulo.coldFusion.module.extension.ColdFusionMutableModuleExtension"/>
 		<psi.referenceContributor language="CFML" implementation="com.intellij.coldFusion.UI.editorActions.completionProviders.CfmlReferenceContributor"/>
 		<programRunner implementation="com.intellij.coldFusion.UI.runner.CfmlRunner"/>
 		<configurationType implementation="com.intellij.coldFusion.UI.runner.CfmlRunConfigurationType"/>
