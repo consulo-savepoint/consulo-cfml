@@ -2,7 +2,7 @@ package org.consulo.coldFusion.module.extension;
 
 import org.consulo.module.extension.impl.ModuleExtensionImpl;
 import org.jetbrains.annotations.NotNull;
-import com.intellij.openapi.roots.ModifiableRootModel;
+import com.intellij.openapi.roots.ModuleRootLayer;
 
 /**
  * @author VISTALL
@@ -10,8 +10,8 @@ import com.intellij.openapi.roots.ModifiableRootModel;
  */
 public class ColdFusionModuleExtension extends ModuleExtensionImpl<ColdFusionModuleExtension>
 {
-	public ColdFusionModuleExtension(@NotNull String id, @NotNull ModifiableRootModel module)
+	public ColdFusionModuleExtension(@NotNull String id, @NotNull ModuleRootLayer moduleRootLayer)
 	{
-		super(id, module);
+		super(id, moduleRootLayer);
 	}
 }
