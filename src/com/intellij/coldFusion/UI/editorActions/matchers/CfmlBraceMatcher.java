@@ -15,12 +15,15 @@
  */
 package com.intellij.coldFusion.UI.editorActions.matchers;
 
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 import com.intellij.codeInsight.highlighting.BraceMatcher;
 import com.intellij.coldFusion.model.CfmlLanguage;
 import com.intellij.coldFusion.model.CfmlUtil;
 import com.intellij.coldFusion.model.files.CfmlFileType;
 import com.intellij.coldFusion.model.lexer.CfmlTokenTypes;
 import com.intellij.coldFusion.model.lexer.CfscriptTokenTypes;
+import com.intellij.ide.highlighter.HtmlFileType;
 import com.intellij.ide.highlighter.XmlFileType;
 import com.intellij.lang.BracePair;
 import com.intellij.lang.Language;
@@ -30,12 +33,9 @@ import com.intellij.openapi.editor.highlighter.HighlighterIterator;
 import com.intellij.openapi.extensions.Extensions;
 import com.intellij.openapi.fileTypes.FileType;
 import com.intellij.openapi.fileTypes.FileTypeExtensionPoint;
-import com.intellij.openapi.fileTypes.StdFileTypes;
 import com.intellij.psi.PsiElement;
 import com.intellij.psi.PsiFile;
 import com.intellij.psi.tree.IElementType;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
 
 /**
  * Created by Lera Nikolaenko
@@ -96,7 +96,7 @@ public class CfmlBraceMatcher implements BraceMatcher {
         for (FileTypeExtensionPoint<BraceMatcher> ext : Extensions.getExtensions(BraceMatcher.EP_NAME)) {
           if (ext.filetype != null && ext.filetype.equals(tokenFileType.getName())) {
             return ext.getInstance().isLBraceToken(iterator, fileText,
-                                                   tokenFileType instanceof XmlFileType ? StdFileTypes.HTML : tokenFileType);
+                                                   tokenFileType instanceof XmlFileType ? HtmlFileType.INSTANCE : tokenFileType);
           }
         }
       }
@@ -128,7 +128,7 @@ public class CfmlBraceMatcher implements BraceMatcher {
         for (FileTypeExtensionPoint<BraceMatcher> ext : Extensions.getExtensions(BraceMatcher.EP_NAME)) {
           if (ext.filetype != null && ext.filetype.equals(tokenFileType.getName())) {
             return ext.getInstance().isRBraceToken(iterator, fileText,
-                                                   tokenFileType instanceof XmlFileType ? StdFileTypes.HTML : tokenFileType);
+                                                   tokenFileType instanceof XmlFileType ? HtmlFileType.INSTANCE : tokenFileType);
           }
         }
       }
