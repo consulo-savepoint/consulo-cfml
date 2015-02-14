@@ -15,7 +15,18 @@
  */
 package com.intellij.coldFusion.UI.editorActions.completionProviders;
 
-import com.intellij.codeInsight.completion.*;
+import static com.intellij.codeInsight.completion.CompletionType.BASIC;
+import static com.intellij.patterns.PlatformPatterns.psiElement;
+import static com.intellij.patterns.XmlPatterns.xmlTag;
+
+import java.util.Set;
+
+import org.jetbrains.annotations.NotNull;
+import com.intellij.codeInsight.completion.CompletionContributor;
+import com.intellij.codeInsight.completion.CompletionInitializationContext;
+import com.intellij.codeInsight.completion.CompletionParameters;
+import com.intellij.codeInsight.completion.CompletionProvider;
+import com.intellij.codeInsight.completion.CompletionResultSet;
 import com.intellij.codeInsight.lookup.LookupElement;
 import com.intellij.codeInsight.lookup.LookupElementBuilder;
 import com.intellij.coldFusion.model.CfmlLanguage;
@@ -28,7 +39,7 @@ import com.intellij.coldFusion.model.psi.CfmlComponent;
 import com.intellij.coldFusion.model.psi.CfmlProperty;
 import com.intellij.coldFusion.model.psi.impl.CfmlFunctionImpl;
 import com.intellij.lang.ASTNode;
-import com.intellij.lang.StdLanguages;
+import com.intellij.lang.xml.XMLLanguage;
 import com.intellij.openapi.editor.Editor;
 import com.intellij.patterns.PatternCondition;
 import com.intellij.patterns.PlatformPatterns;
@@ -37,13 +48,6 @@ import com.intellij.psi.formatter.FormatterUtil;
 import com.intellij.util.Function;
 import com.intellij.util.ProcessingContext;
 import com.intellij.util.containers.ContainerUtil;
-import org.jetbrains.annotations.NotNull;
-
-import java.util.Set;
-
-import static com.intellij.codeInsight.completion.CompletionType.BASIC;
-import static com.intellij.patterns.PlatformPatterns.psiElement;
-import static com.intellij.patterns.XmlPatterns.xmlTag;
 
 /**
  * Created by Lera Nikolaenko
@@ -88,7 +92,7 @@ public class CfmlCompletionContributor extends CompletionContributor {
 
     // tag names completion in template data, in open and close constructions in cfml data
     CfmlTagNamesCompletionProvider tagNamesCompletionProvider = new CfmlTagNamesCompletionProvider();
-    extend(BASIC, PlatformPatterns.psiElement().afterLeaf(psiElement().withText("<")).withLanguage(StdLanguages.XML),
+    extend(BASIC, PlatformPatterns.psiElement().afterLeaf(psiElement().withText("<")).withLanguage(XMLLanguage.INSTANCE),
            tagNamesCompletionProvider);
     extend(BASIC, PlatformPatterns.psiElement().afterLeaf(psiElement().withText("<")).withLanguage(CfmlLanguage.INSTANCE),
            tagNamesCompletionProvider);

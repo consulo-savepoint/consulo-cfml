@@ -15,15 +15,15 @@
  */
 package com.intellij.coldFusion.UI;
 
+import org.jetbrains.annotations.NotNull;
 import com.intellij.coldFusion.model.CfmlLanguage;
 import com.intellij.coldFusion.model.psi.CfmlTag;
 import com.intellij.lang.Language;
-import com.intellij.lang.StdLanguages;
+import com.intellij.lang.html.HTMLLanguage;
 import com.intellij.psi.PsiElement;
 import com.intellij.psi.util.PsiTreeUtil;
 import com.intellij.psi.xml.XmlTag;
 import com.intellij.xml.breadcrumbs.BreadcrumbsInfoProvider;
-import org.jetbrains.annotations.NotNull;
 
 /**
  * Created by Lera Nikolaenko
@@ -31,7 +31,7 @@ import org.jetbrains.annotations.NotNull;
  */
 public class CfmlBreadcrumbsInfoProvider extends BreadcrumbsInfoProvider {
   public Language[] getLanguages() {
-    return new Language[]{CfmlLanguage.INSTANCE, StdLanguages.HTML};
+    return new Language[]{CfmlLanguage.INSTANCE, HTMLLanguage.INSTANCE};
   }
 
   public boolean acceptElement(@NotNull final PsiElement e) {
